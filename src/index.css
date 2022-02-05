@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  margin: 5px 0px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.standardUserIcon {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/*
+For Single Pages
+*/
+.back-link-text {
+  font-family: sans-serif;
+}
+.listGroupLabel {
+  font-weight: bold;
+}
+.cardImg {
+  object-fit: cover;
+  width: 200px;
+}
+
+/*
+For List Pages
+*/
+.editIcon {
+  color: darkblue;
+  padding: 3px;
+}
+.deleteIcon {
+  color: red;
+  padding: 3px;
+}
+.deleteIcon:hover,
+.editIcon:hover {
+  cursor: pointer;
+}
+.productThumb {
+  width: 80px;
+}
+
+/*
+For WidgetSmall.jsx and WidgetLarge.jsx
+*/
+.widgetTitle {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/*
+Truncate long IDs in tables
+*/
+.longIdWrapper {
+  width: auto;
+  overflow-wrap: normal;
+}
+
+@media screen and (max-width: 991px) {
+  .productThumb {
+    width: 50px;
+  }
+  .longIdWrapper {
+    width: 70px;
+    overflow-wrap: anywhere;
+  }
+}

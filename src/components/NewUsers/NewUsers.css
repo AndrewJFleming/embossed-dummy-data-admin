@@ -1,0 +1,17 @@
+.NewUsersList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.NewUsersListItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px 0px;
+}
+
+.NewUsersUsername {
+  margin-left: 10px;
+  margin-bottom: 0;
+}

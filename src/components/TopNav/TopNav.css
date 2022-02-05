@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #151431;
+  font-family: "Open Sans", sans-serif;
+}
+.navbar button {
+  margin: 0px;
+  padding: 0px 5px;
+}
+
+.navLogoText {
+  color: rgb(255, 217, 223);
+}
+
+.myResponsive {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 991px) {
+  .myResponsive {
+    display: block;
+  }
+}
