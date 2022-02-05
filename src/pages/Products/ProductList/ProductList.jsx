@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { productData } from "../../../dummyData";
 import {
   Button,
   Container,
@@ -15,12 +16,13 @@ const ProductList = () => {
 
   useEffect(() => {
     const getProducts = async () => {
-      try {
-        const res = await userRequest.get("products");
-        setProducts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      setProducts(productData);
+      // try {
+      //   const res = await userRequest.get("products");
+      //   setProducts(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getProducts();
   }, []);

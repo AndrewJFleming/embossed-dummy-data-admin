@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { salesData } from "../../dummyData";
+import { saleData } from "../../dummyData";
 import { Container, Table } from "react-bootstrap";
 import { userRequest } from "../../requestMethods";
 
@@ -10,7 +10,7 @@ const ActiveSales = () => {
 
   useEffect(() => {
     const getSales = async () => {
-      setSales(salesData);
+      setSales(saleData);
       // try {
       //   const res = await userRequest.get("sales");
       //   setSales(res.data);

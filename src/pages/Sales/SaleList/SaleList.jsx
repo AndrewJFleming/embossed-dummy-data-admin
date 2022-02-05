@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { saleData } from "../../../dummyData";
 import { userRequest } from "../../../requestMethods";
 import { Container, Table, Button } from "react-bootstrap";
 
@@ -9,12 +10,13 @@ const SaleList = () => {
 
   useEffect(() => {
     const getSales = async () => {
-      try {
-        const res = await userRequest.get("sales");
-        setSales(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      setSales(saleData);
+      // try {
+      //   const res = await userRequest.get("sales");
+      //   setSales(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getSales();
   }, []);

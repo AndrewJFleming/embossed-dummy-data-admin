@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { userData } from "../../../dummyData";
 import { userRequest } from "../../../requestMethods";
 import { Container, Table, Button } from "react-bootstrap";
 
@@ -9,12 +10,14 @@ const UserList = () => {
 
   useEffect(() => {
     const getUsers = async () => {
-      try {
-        const res = await userRequest.get("users");
-        setUsers(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      console.log(userData);
+      setUsers(userData);
+      // try {
+      //   const res = await userRequest.get("users");
+      //   setUsers(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getUsers();
   }, []);

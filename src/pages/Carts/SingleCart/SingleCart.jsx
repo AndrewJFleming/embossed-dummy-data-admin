@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import * as uuid from "uuid";
 
+import { cartData, productData } from "../../../dummyData";
 import {
   Row,
   Col,
@@ -37,25 +38,32 @@ const SingleCart = () => {
   });
 
   useEffect(() => {
+    const myCart = cartData.find((c) => c._id === cartId);
+    setCart(myCart);
+    setCartProducts({
+      userId: myCart.userId,
+      products: myCart.products,
+    });
     const getCart = async () => {
-      const res = await userRequest.get("/carts/find/" + cartId);
-      setCart(res.data);
-      setCartProducts({
-        userId: res.data.userId,
-        products: res.data.products,
-      });
+      // const res = await userRequest.get("/carts/find/" + cartId);
+      // setCart(res.data);
+      // setCartProducts({
+      //   userId: res.data.userId,
+      //   products: res.data.products,
+      // });
     };
     getCart();
   }, [cartId]);
 
   useEffect(() => {
     const getProducts = async () => {
-      try {
-        const res = await userRequest.get("products");
-        setAllProducts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      setAllProducts(productData);
+      // try {
+      //   const res = await userRequest.get("products");
+      //   setAllProducts(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getProducts();
   }, []);
@@ -205,6 +213,7 @@ const SingleCart = () => {
           ))}
         </Row>
       </Container>
+
       <Container className="mb-5">
         <h2>Add Cart Product</h2>
         <Row>

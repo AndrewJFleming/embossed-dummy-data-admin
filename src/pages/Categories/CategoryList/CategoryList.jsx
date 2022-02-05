@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { categoryData } from "../../../dummyData";
 import {
   Button,
   Container,
@@ -15,12 +16,13 @@ const CategoryList = () => {
 
   useEffect(() => {
     const getCats = async () => {
-      try {
-        const res = await userRequest.get("categories");
-        setCats(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      setCats(categoryData);
+      // try {
+      //   const res = await userRequest.get("categories");
+      //   setCats(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getCats();
   }, []);

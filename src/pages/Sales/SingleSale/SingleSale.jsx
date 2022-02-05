@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import { saleData, productData } from "../../../dummyData";
 import { Button, Container, Form, Card, ListGroup } from "react-bootstrap";
 import { userRequest } from "../../../requestMethods";
 import PercentInput from "../../../shared/components/PercentInput/PercentInput";
@@ -25,12 +26,13 @@ const SingleSale = () => {
   //Get products to populate select dropdown.
   useEffect(() => {
     const getProducts = async () => {
-      try {
-        const res = await userRequest.get("products");
-        setAllProducts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      setAllProducts(productData);
+      // try {
+      //   const res = await userRequest.get("products");
+      //   setAllProducts(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getProducts();
   }, []);
@@ -42,29 +44,40 @@ const SingleSale = () => {
     });
 
   useEffect(() => {
+    const mySale = saleData.find((s) => s._id === saleId);
     const getSale = async () => {
-      const res = await userRequest.get("/sales/find/" + saleId);
-      setSale(res.data);
+      setSale(mySale);
       setFormData({
-        title: res.data.title,
-        desc: res.data.desc,
-        percentOff: res.data.percentOff,
-        productId: res.data.productId,
-        isActive: res.data.isActive,
-        isFeatured: res.data.isFeatured,
-        img: res.data.img,
+        title: mySale.title,
+        desc: mySale.desc,
+        percentOff: mySale.percentOff,
+        productId: mySale.productId,
+        isActive: mySale.isActive,
+        isFeatured: mySale.isFeatured,
+        img: mySale.img,
       });
+      // const res = await userRequest.get("/sales/find/" + saleId);
+      // setSale(res.data);
+      // setFormData({
+      //   title: res.data.title,
+      //   desc: res.data.desc,
+      //   percentOff: res.data.percentOff,
+      //   productId: res.data.productId,
+      //   isActive: res.data.isActive,
+      //   isFeatured: res.data.isFeatured,
+      //   img: res.data.img,
+      // });
     };
     getSale();
   }, [saleId]);
 
-  useEffect(() => {
-    const foundProduct = allProducts.find((p) => p._id === sale.productId);
-    setSale({
-      ...sale,
-      productTitle: foundProduct?.title,
-    });
-  }, [formData]);
+  // useEffect(() => {
+  //   const foundProduct = allProducts.find((p) => p._id === sale.productId);
+  //   setSale({
+  //     ...sale,
+  //     productTitle: foundProduct?.title,
+  //   });
+  // }, [formData]);
 
   const handleUpdate = async () => {
     try {

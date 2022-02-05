@@ -24,7 +24,6 @@ const SingleUser = () => {
 
   useEffect(() => {
     const user = userData.find((u) => u._id === userId);
-    console.log(user);
     const getUser = async () => {
       setUser(user);
       // const res = await userRequest.get("/users/find/" + userId);

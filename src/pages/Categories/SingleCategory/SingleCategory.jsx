@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import { categoryData } from "../../../dummyData";
 import { Button, Card, ListGroup, Container, Form } from "react-bootstrap";
 import { userRequest } from "../../../requestMethods";
 
@@ -32,16 +33,25 @@ const SingleCategory = () => {
     });
 
   useEffect(() => {
+    const myCategory = categoryData.find((s) => s._id === catId);
     const getCat = async () => {
-      const res = await userRequest.get("/categories/find/" + catId);
-      setCategory(res.data);
+      setCategory(myCategory);
       setFormData({
-        title: res.data.title,
-        desc: res.data.desc,
-        isSlide: res.data.isSlide,
-        isFeatured: res.data.isFeatured,
-        img: res.data.img,
+        title: myCategory.title,
+        desc: myCategory.desc,
+        isSlide: myCategory.isSlide,
+        isFeatured: myCategory.isFeatured,
+        img: myCategory.img,
       });
+      // const res = await userRequest.get("/categories/find/" + catId);
+      // setCategory(res.data);
+      // setFormData({
+      //   title: res.data.title,
+      //   desc: res.data.desc,
+      //   isSlide: res.data.isSlide,
+      //   isFeatured: res.data.isFeatured,
+      //   img: res.data.img,
+      // });
     };
     getCat();
   }, [catId]);

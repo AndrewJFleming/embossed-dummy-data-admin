@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { cartData } from "../../../dummyData";
 import { userRequest } from "../../../requestMethods";
 import { Container, Table } from "react-bootstrap";
 
@@ -9,12 +10,13 @@ const CartList = () => {
 
   useEffect(() => {
     const getCarts = async () => {
-      try {
-        const res = await userRequest.get("carts");
-        setCarts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      setCarts(cartData);
+      // try {
+      //   const res = await userRequest.get("carts");
+      //   setCarts(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getCarts();
   }, []);
