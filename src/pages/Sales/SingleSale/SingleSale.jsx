@@ -18,24 +18,10 @@ const SingleSale = () => {
     productId: "",
     isActive: false,
     isFeatured: false,
+    productTitle: "",
     img: "",
   });
-  const [allProducts, setAllProducts] = useState([]);
   const [reminder, setReminder] = useState(false);
-
-  //Get products to populate select dropdown.
-  useEffect(() => {
-    const getProducts = async () => {
-      setAllProducts(productData);
-      // try {
-      //   const res = await userRequest.get("products");
-      //   setAllProducts(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getProducts();
-  }, []);
 
   const handleChange = (e) =>
     setFormData({
@@ -45,39 +31,29 @@ const SingleSale = () => {
 
   useEffect(() => {
     const mySale = saleData.find((s) => s._id === saleId);
-    const getSale = async () => {
-      setSale(mySale);
-      setFormData({
-        title: mySale.title,
-        desc: mySale.desc,
-        percentOff: mySale.percentOff,
-        productId: mySale.productId,
-        isActive: mySale.isActive,
-        isFeatured: mySale.isFeatured,
-        img: mySale.img,
-      });
-      // const res = await userRequest.get("/sales/find/" + saleId);
-      // setSale(res.data);
-      // setFormData({
-      //   title: res.data.title,
-      //   desc: res.data.desc,
-      //   percentOff: res.data.percentOff,
-      //   productId: res.data.productId,
-      //   isActive: res.data.isActive,
-      //   isFeatured: res.data.isFeatured,
-      //   img: res.data.img,
-      // });
-    };
-    getSale();
-  }, [saleId]);
+    const foundProduct = productData.find((p) => p._id === mySale.productId);
 
-  // useEffect(() => {
-  //   const foundProduct = allProducts.find((p) => p._id === sale.productId);
-  //   setSale({
-  //     ...sale,
-  //     productTitle: foundProduct?.title,
-  //   });
-  // }, [formData]);
+    setSale({
+      title: mySale.title,
+      desc: mySale.desc,
+      percentOff: mySale.percentOff,
+      productId: mySale.productId,
+      isActive: mySale.isActive,
+      isFeatured: mySale.isFeatured,
+      img: mySale.img,
+      productTitle: foundProduct.title,
+    });
+    setFormData({
+      title: mySale.title,
+      desc: mySale.desc,
+      percentOff: mySale.percentOff,
+      productId: mySale.productId,
+      isActive: mySale.isActive,
+      isFeatured: mySale.isFeatured,
+      img: mySale.img,
+      productTitle: foundProduct.title,
+    });
+  }, [saleId]);
 
   const handleUpdate = async () => {
     setSale(formData);
@@ -168,13 +144,13 @@ const SingleSale = () => {
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  productId: e.target.value,
+                  productTitle: e.target.value,
                 });
               }}
             >
               <option>Select Product</option>
-              {allProducts?.map((p) => (
-                <option value={p._id}>{p.title}</option>
+              {productData.map((p) => (
+                <option value={p.title}>{p.title}</option>
               ))}
             </Form.Select>
           </Form.Group>

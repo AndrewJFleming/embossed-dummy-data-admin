@@ -44,30 +44,27 @@ const SingleProduct = () => {
 
   useEffect(() => {
     const myProduct = productData.find((p) => p._id === productId);
-    const getPost = async () => {
-      setProduct(myProduct);
-      setFormData({
-        title: myProduct.title,
-        desc: myProduct.desc,
-        categories: myProduct.categories,
-        variants: myProduct.variants,
-        price: myProduct.price,
-        inStock: myProduct.inStock,
-        img: myProduct.img,
-      });
-      // const res = await userRequest.get("/products/find/" + productId);
-      // setProduct(res.data);
-      // setFormData({
-      //   title: res.data.title,
-      //   desc: res.data.desc,
-      //   categories: res.data.categories,
-      //   variants: res.data.variants,
-      //   price: res.data.price,
-      //   inStock: res.data.inStock,
-      //   img: res.data.img,
-      // });
-    };
-    getPost();
+    setProduct(myProduct);
+    setFormData({
+      title: myProduct.title,
+      desc: myProduct.desc,
+      categories: myProduct.categories,
+      variants: myProduct.variants,
+      price: myProduct.price,
+      inStock: myProduct.inStock,
+      img: myProduct.img,
+    });
+    // const res = await userRequest.get("/products/find/" + productId);
+    // setProduct(res.data);
+    // setFormData({
+    //   title: res.data.title,
+    //   desc: res.data.desc,
+    //   categories: res.data.categories,
+    //   variants: res.data.variants,
+    //   price: res.data.price,
+    //   inStock: res.data.inStock,
+    //   img: res.data.img,
+    // });
   }, [productId]);
 
   return (
@@ -111,7 +108,7 @@ const SingleProduct = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <span className="listGroupLabel">Categories:&nbsp;</span>
-              {product.categories.map((c) => (
+              {product.categories?.map((c) => (
                 <span>
                   &nbsp;&#8226;<em>{c}</em>
                 </span>
@@ -119,7 +116,7 @@ const SingleProduct = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <span className="listGroupLabel">Variants:&nbsp;</span>
-              {product.variants.map((v) => (
+              {product.variants?.map((v) => (
                 <span>
                   &nbsp;&#8226;<em>{v}</em>
                 </span>
