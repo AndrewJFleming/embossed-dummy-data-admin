@@ -30,7 +30,9 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/login">
-          {!admin ? <Login errorStatus={error} /> : <Redirect to="/" />}
+          {/* {!admin ?  */}
+          <Login errorStatus={error} />
+          {/* // : <Redirect to="/" />} */}
         </Route>
         <React.Fragment>
           <TopNav />
