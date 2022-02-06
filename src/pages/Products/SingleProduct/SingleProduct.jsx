@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { productData } from "../../../dummyData";
 import { Button, Card, ListGroup, Container, Form } from "react-bootstrap";
 import { userRequest } from "../../../requestMethods";
+import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
 
 const SingleProduct = () => {
   const location = useLocation();
@@ -19,14 +20,14 @@ const SingleProduct = () => {
     img: "",
   });
 
-  const handleUpdate = async () => {
-    try {
-      await userRequest.put(`/products/${productId}`, formData);
-      window.location.replace("/product/" + productId);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleUpdate = async () => {
+  //   try {
+  //     await userRequest.put(`/products/${productId}`, formData);
+  //     window.location.replace("/product/" + productId);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleChange = (e) =>
     setFormData({
@@ -210,7 +211,8 @@ const SingleProduct = () => {
             />
           </Form.Group>
 
-          <Button onClick={handleUpdate}>Update</Button>
+          {/* <Button onClick={handleUpdate}>Update</Button> */}
+          <ButtonWithAlert buttonName="Update" />
         </Form>
       </Container>
     </div>

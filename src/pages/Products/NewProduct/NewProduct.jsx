@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { userRequest } from "../../../requestMethods";
 import { Container, Button, Form } from "react-bootstrap";
+import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
 
 const NewProduct = () => {
   const [formData, setFormData] = useState({
@@ -130,7 +131,8 @@ const NewProduct = () => {
           </Form.Text>
         </Form.Group>
 
-        <Button onClick={handleSubmit}>Create</Button>
+        {/* <Button onClick={handleSubmit}>Create</Button> */}
+        <ButtonWithAlert buttonName="Create" />
       </Form>
     </Container>
   );

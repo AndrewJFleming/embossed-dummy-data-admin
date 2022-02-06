@@ -28,12 +28,14 @@ const ProductList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await userRequest.delete(`/products/${id}`);
-      window.location.replace("/products/");
-    } catch (err) {
-      console.log(err);
-    }
+    const newProductsArray = products.filter((p) => p._id !== id);
+    setProducts(newProductsArray);
+    // try {
+    //   await userRequest.delete(`/products/${id}`);
+    //   window.location.replace("/products/");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (
