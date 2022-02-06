@@ -3,8 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { productData } from "../../../dummyData";
 import { Button, Card, ListGroup, Container, Form } from "react-bootstrap";
-import { userRequest } from "../../../requestMethods";
-import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
+// import { userRequest } from "../../../requestMethods";
 
 const SingleProduct = () => {
   const location = useLocation();
@@ -20,14 +19,15 @@ const SingleProduct = () => {
     img: "",
   });
 
-  // const handleUpdate = async () => {
-  //   try {
-  //     await userRequest.put(`/products/${productId}`, formData);
-  //     window.location.replace("/product/" + productId);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const handleUpdate = async () => {
+    setProduct(formData);
+    // try {
+    //   await userRequest.put(`/products/${productId}`, formData);
+    //   window.location.replace("/product/" + productId);
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  };
 
   const handleChange = (e) =>
     setFormData({
@@ -111,7 +111,7 @@ const SingleProduct = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <span className="listGroupLabel">Categories:&nbsp;</span>
-              {formData.categories.map((c) => (
+              {product.categories.map((c) => (
                 <span>
                   &nbsp;&#8226;<em>{c}</em>
                 </span>
@@ -119,7 +119,7 @@ const SingleProduct = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <span className="listGroupLabel">Variants:&nbsp;</span>
-              {formData.variants.map((v) => (
+              {product.variants.map((v) => (
                 <span>
                   &nbsp;&#8226;<em>{v}</em>
                 </span>
@@ -211,8 +211,7 @@ const SingleProduct = () => {
             />
           </Form.Group>
 
-          {/* <Button onClick={handleUpdate}>Update</Button> */}
-          <ButtonWithAlert buttonName="Update" />
+          <Button onClick={handleUpdate}>Update</Button>
         </Form>
       </Container>
     </div>

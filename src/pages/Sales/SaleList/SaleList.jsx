@@ -22,12 +22,14 @@ const SaleList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await userRequest.delete(`/sales/${id}`);
-      window.location.replace("/sales/");
-    } catch (err) {
-      console.log(err);
-    }
+    const newSalesArray = sales.filter((s) => s._id !== id);
+    setSales(newSalesArray);
+    // try {
+    //   await userRequest.delete(`/sales/${id}`);
+    //   window.location.replace("/sales/");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (

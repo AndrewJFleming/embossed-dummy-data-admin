@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { saleData, productData } from "../../../dummyData";
 import { Button, Container, Form, Card, ListGroup } from "react-bootstrap";
-import { userRequest } from "../../../requestMethods";
+// import { userRequest } from "../../../requestMethods";
 import PercentInput from "../../../shared/components/PercentInput/PercentInput";
 import ImagePlaceholder from "../../../shared/components/ImagePlaceholder/ImagePlaceholder";
 
@@ -80,12 +80,13 @@ const SingleSale = () => {
   // }, [formData]);
 
   const handleUpdate = async () => {
-    try {
-      await userRequest.put(`/sales/${saleId}`, formData);
-      window.location.replace("/sale/" + saleId);
-    } catch (err) {
-      console.log(err);
-    }
+    setSale(formData);
+    // try {
+    //   await userRequest.put(`/sales/${saleId}`, formData);
+    //   window.location.replace("/sale/" + saleId);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (

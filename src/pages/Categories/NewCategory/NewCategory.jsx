@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-import { userRequest } from "../../../requestMethods";
-import { Container, Button, Form } from "react-bootstrap";
+// import { userRequest } from "../../../requestMethods";
+import { Container, Form } from "react-bootstrap";
+import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
 
 const NewCategory = () => {
   const [formData, setFormData] = useState({
@@ -18,15 +19,15 @@ const NewCategory = () => {
       [e.target.name]: e.target.value,
     });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await userRequest.post("/categories", formData);
-      window.location.replace("/category/" + res.data._id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await userRequest.post("/categories", formData);
+  //     window.location.replace("/category/" + res.data._id);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <Container className="my-5">
@@ -96,7 +97,8 @@ const NewCategory = () => {
           </Form.Text>
         </Form.Group>
 
-        <Button onClick={handleSubmit}>Create</Button>
+        {/* <Button onClick={handleSubmit}>Create</Button> */}
+        <ButtonWithAlert buttonName="Create" />
       </Form>
     </Container>
   );

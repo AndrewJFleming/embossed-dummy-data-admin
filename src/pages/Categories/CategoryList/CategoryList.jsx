@@ -28,12 +28,14 @@ const CategoryList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await userRequest.delete(`/categories/${id}`);
-      window.location.replace("/categories/");
-    } catch (err) {
-      console.log(err);
-    }
+    const newCatsArray = cats.filter((c) => c._id !== id);
+    setCats(newCatsArray);
+    // try {
+    //   await userRequest.delete(`/categories/${id}`);
+    //   window.location.replace("/categories/");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { userRequest } from "../../../requestMethods";
-import { Container, Form, Button } from "react-bootstrap";
+// import { userRequest } from "../../../requestMethods";
+import { productData } from "../../../dummyData";
+import { Container, Form } from "react-bootstrap";
 import "./NewSale.css";
 import PercentInput from "../../../shared/components/PercentInput/PercentInput";
+import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
 
 const NewSale = () => {
   const [formData, setFormData] = useState({
@@ -21,12 +23,13 @@ const NewSale = () => {
   //Get products to populate select dropdown.
   useEffect(() => {
     const getProducts = async () => {
-      try {
-        const res = await userRequest.get("products");
-        setAllProducts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      setAllProducts(productData);
+      // try {
+      //   const res = await userRequest.get("products");
+      //   setAllProducts(res.data);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     };
     getProducts();
   }, []);
@@ -37,15 +40,15 @@ const NewSale = () => {
       [e.target.name]: e.target.value,
     });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await userRequest.post("/sales/", formData);
-      window.location.replace("/sale/" + res.data._id);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await userRequest.post("/sales/", formData);
+  //     window.location.replace("/sale/" + res.data._id);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <Container className="my-5">
@@ -143,7 +146,8 @@ const NewSale = () => {
           </Form.Text>
         </Form.Group>
 
-        <Button onClick={handleSubmit}>Create</Button>
+        {/* <Button onClick={handleSubmit}>Create</Button> */}
+        <ButtonWithAlert buttonName="Create" />
       </Form>
     </Container>
   );

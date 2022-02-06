@@ -23,12 +23,14 @@ const UserList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await userRequest.delete(`/users/${id}`);
-      window.location.replace("/users/");
-    } catch (err) {
-      console.log(err);
-    }
+    const newUsersArray = users.filter((u) => u._id !== id);
+    setUsers(newUsersArray);
+    // try {
+    //   await userRequest.delete(`/users/${id}`);
+    //   window.location.replace("/users/");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (

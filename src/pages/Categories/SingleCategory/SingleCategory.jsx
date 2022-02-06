@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { categoryData } from "../../../dummyData";
 import { Button, Card, ListGroup, Container, Form } from "react-bootstrap";
-import { userRequest } from "../../../requestMethods";
+// import { userRequest } from "../../../requestMethods";
 
 const SingleCategory = () => {
   const location = useLocation();
@@ -18,12 +18,13 @@ const SingleCategory = () => {
   });
 
   const handleUpdate = async () => {
-    try {
-      await userRequest.put(`/categories/${catId}`, formData);
-      window.location.replace("/category/" + catId);
-    } catch (err) {
-      console.log(err);
-    }
+    setCategory(formData);
+    // try {
+    //   await userRequest.put(`/categories/${catId}`, formData);
+    //   window.location.replace("/category/" + catId);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const handleChange = (e) =>
@@ -163,6 +164,7 @@ const SingleCategory = () => {
           </Form.Group>
 
           <Button onClick={handleUpdate}>Update</Button>
+          {/* <ButtonWithAlert buttonName="Update" /> */}
         </Form>
       </Container>
     </div>

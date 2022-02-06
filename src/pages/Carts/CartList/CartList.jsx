@@ -22,12 +22,14 @@ const CartList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await userRequest.delete(`/carts/${id}`);
-      window.location.replace("/carts/");
-    } catch (err) {
-      console.log(err);
-    }
+    const newCartsArray = carts.filter((c) => c._id !== id);
+    setCarts(newCartsArray);
+    // try {
+    //   await userRequest.delete(`/carts/${id}`);
+    //   window.location.replace("/carts/");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (

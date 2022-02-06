@@ -4,9 +4,10 @@ import { useHistory } from "react-router-dom";
 
 import { CLEAR_AUTH_ERROR } from "../../../redux/constants/actionTypes";
 import { createUser } from "../../../redux/actions/auth";
-import { userRequest } from "../../../requestMethods";
-import { Container, Form, Button } from "react-bootstrap";
-import ErrorPrompt from "../../../shared/components/ErrorPrompt/ErrorPrompt";
+// import { userRequest } from "../../../requestMethods";
+import { Container, Form } from "react-bootstrap";
+// import ErrorPrompt from "../../../shared/components/ErrorPrompt/ErrorPrompt";
+import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
 
 const NewUser = ({ errorStatus }) => {
   const [formData, setFormData] = useState({
@@ -17,14 +18,14 @@ const NewUser = ({ errorStatus }) => {
   });
   const dispatch = useDispatch();
   const history = useHistory();
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
 
-  useEffect(() => {
-    setError(errorStatus);
-    setTimeout(function () {
-      dispatch({ type: CLEAR_AUTH_ERROR });
-    }, 3000);
-  }, [errorStatus, dispatch]);
+  // useEffect(() => {
+  //   setError(errorStatus);
+  //   setTimeout(function () {
+  //     dispatch({ type: CLEAR_AUTH_ERROR });
+  //   }, 3000);
+  // }, [errorStatus, dispatch]);
 
   const handleChange = (e) =>
     setFormData({
@@ -32,11 +33,11 @@ const NewUser = ({ errorStatus }) => {
       [e.target.name]: e.target.value,
     });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    dispatch(createUser(formData, history));
-  };
+  //   dispatch(createUser(formData, history));
+  // };
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -99,8 +100,9 @@ const NewUser = ({ errorStatus }) => {
           />
         </Form.Group>
 
-        <Button onClick={handleSubmit}>Create</Button>
-        {error && <ErrorPrompt h5="Create Error:" h6={errorStatus} />}
+        {/* <Button onClick={handleSubmit}>Create</Button>
+        {error && <ErrorPrompt h5="Create Error:" h6={errorStatus} />} */}
+        <ButtonWithAlert buttonName="Create" />
       </Form>
     </Container>
   );

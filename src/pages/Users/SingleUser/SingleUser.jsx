@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { userData } from "../../../dummyData";
 import { Button, Container, Form, Card, ListGroup } from "react-bootstrap";
-import { userRequest } from "../../../requestMethods";
+// import { userRequest } from "../../../requestMethods";
 
 const SingleUser = () => {
   const location = useLocation();
@@ -23,9 +23,14 @@ const SingleUser = () => {
     });
 
   useEffect(() => {
-    const user = userData.find((u) => u._id === userId);
+    const myUser = userData.find((u) => u._id === userId);
     const getUser = async () => {
-      setUser(user);
+      setUser(myUser);
+      setFormData({
+        username: myUser.username,
+        email: myUser.email,
+        isAdmin: myUser.isAdmin,
+      });
       // const res = await userRequest.get("/users/find/" + userId);
       // setUser(res.data);
       // setFormData({
@@ -38,12 +43,13 @@ const SingleUser = () => {
   }, [userId]);
 
   const handleUpdate = async () => {
-    try {
-      await userRequest.put(`/users/admin/${userId}`, formData);
-      window.location.replace("/user/" + userId);
-    } catch (err) {
-      console.log(err);
-    }
+    setUser(formData);
+    // try {
+    //   await userRequest.put(`/users/admin/${userId}`, formData);
+    //   window.location.replace("/user/" + userId);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (
@@ -88,6 +94,7 @@ const SingleUser = () => {
           <Form.Group className="mb-3">
             <Form.Label>Username</Form.Label>
             <Form.Control
+              placeholder={formData.username}
               type="text"
               value={formData.username}
               name="username"
