@@ -2,34 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { cartData } from "../../../dummyData";
-import { userRequest } from "../../../requestMethods";
 import { Container, Table } from "react-bootstrap";
 
 const CartList = () => {
   const [carts, setCarts] = useState([]);
 
   useEffect(() => {
-    const getCarts = async () => {
-      setCarts(cartData);
-      // try {
-      //   const res = await userRequest.get("carts");
-      //   setCarts(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getCarts();
+    setCarts(cartData);
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     const newCartsArray = carts.filter((c) => c._id !== id);
     setCarts(newCartsArray);
-    // try {
-    //   await userRequest.delete(`/carts/${id}`);
-    //   window.location.replace("/carts/");
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (

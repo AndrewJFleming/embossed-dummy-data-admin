@@ -9,33 +9,17 @@ import {
   Tooltip,
   OverlayTrigger,
 } from "react-bootstrap";
-import { userRequest } from "../../../requestMethods";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const getProducts = async () => {
-      setProducts(productData);
-      // try {
-      //   const res = await userRequest.get("products");
-      //   setProducts(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getProducts();
+    setProducts(productData);
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     const newProductsArray = products.filter((p) => p._id !== id);
     setProducts(newProductsArray);
-    // try {
-    //   await userRequest.delete(`/products/${id}`);
-    //   window.location.replace("/products/");
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (

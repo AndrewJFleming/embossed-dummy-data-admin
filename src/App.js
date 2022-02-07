@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
@@ -18,68 +18,60 @@ import SingleSale from "./pages/Sales/SingleSale/SingleSale";
 import NewSale from "./pages/Sales/NewSale/NewSale";
 import CartList from "./pages/Carts/CartList/CartList";
 import SingleCart from "./pages/Carts/SingleCart/SingleCart";
-import { useSelector } from "react-redux";
 
 const App = () => {
-  // const admin = useSelector((state) => state.user.currentUser.isAdmin);
-  // const admin = useSelector((state) => state.auth.authData.result?.isAdmin);
-  const admin = true;
-  const error = useSelector((state) => state.auth.error);
-
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/login">
-          {/* {!admin ?  */}
-          <Login errorStatus={error} />
-          {/* // : <Redirect to="/" />} */}
+          <Login />
         </Route>
         <React.Fragment>
           <TopNav />
           <Route exact path="/">
-            {admin ? <Home /> : <Redirect to="/login" />}
+            <Home />
           </Route>
           <Route path="/users">
-            {admin ? <UserList /> : <Redirect to="/login" />}
+            <UserList />
           </Route>
           <Route path="/user/:userId">
-            {admin ? <SingleUser /> : <Redirect to="/login" />}
+            <SingleUser />
           </Route>
           <Route path="/new-user">
-            {admin ? <NewUser errorStatus={error} /> : <Redirect to="/login" />}
+            <NewUser />
           </Route>
           <Route path="/products">
-            {admin ? <ProductList /> : <Redirect to="/login" />}
+            <ProductList />
           </Route>
           <Route path="/product/:productId">
-            {admin ? <SingleProduct /> : <Redirect to="/login" />}
+            <SingleProduct />
           </Route>
           <Route path="/new-product">
-            {admin ? <NewProduct /> : <Redirect to="/login" />}
+            <NewProduct />
           </Route>
           <Route path="/categories">
-            {admin ? <CategoryList /> : <Redirect to="/login" />}
+            <CategoryList />
           </Route>
           <Route path="/category/:catId">
-            {admin ? <SingleCategory /> : <Redirect to="/login" />}
+            <SingleCategory />
           </Route>
           <Route path="/new-category">
-            {admin ? <NewCategory /> : <Redirect to="/login" />}
+            <NewCategory />
           </Route>
           <Route path="/carts">
-            {admin ? <CartList /> : <Redirect to="/login" />}
+            <CartList />
           </Route>
           <Route path="/cart/:cartId">
-            {admin ? <SingleCart /> : <Redirect to="/login" />}
+            <SingleCart />
           </Route>
           <Route path="/sales">
-            {admin ? <SaleList /> : <Redirect to="/login" />}
+            <SaleList />
           </Route>
           <Route path="/sale/:saleId">
-            {admin ? <SingleSale /> : <Redirect to="/login" />}
+            <SingleSale />
           </Route>
           <Route path="/new-sale">
-            {admin ? <NewSale /> : <Redirect to="/login" />}
+            <NewSale />
           </Route>
         </React.Fragment>
       </Switch>

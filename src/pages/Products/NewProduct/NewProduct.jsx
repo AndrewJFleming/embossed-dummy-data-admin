@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import { userRequest } from "../../../requestMethods";
-import { Container, Button, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
 
 const NewProduct = () => {
@@ -26,16 +25,6 @@ const NewProduct = () => {
       ...formData,
       [e.target.name]: e.target.value.split(","),
     });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await userRequest.post("/products", formData);
-      window.location.replace("/product/" + res.data._id);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
@@ -131,7 +120,6 @@ const NewProduct = () => {
           </Form.Text>
         </Form.Group>
 
-        {/* <Button onClick={handleSubmit}>Create</Button> */}
         <ButtonWithAlert buttonName="Create" />
       </Form>
     </Container>

@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 
 import { Container, Form, Button } from "react-bootstrap";
-import { signin } from "../../redux/actions/auth";
-import ErrorPrompt from "../../shared/components/ErrorPrompt/ErrorPrompt";
-import { CLEAR_AUTH_ERROR } from "../../redux/constants/actionTypes";
 import HomepageLinkModal from "../../shared/components/HomepageLinkModal/HomepageLinkModal";
 
-const Login = ({ errorStatus }) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -18,7 +11,6 @@ const Login = ({ errorStatus }) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(signin(formData, history));
   };
 
   const handleChange = (e) =>
@@ -26,16 +18,6 @@ const Login = ({ errorStatus }) => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-
-  useEffect(() => {
-    dispatch({ type: CLEAR_AUTH_ERROR });
-  }, []);
-
-  useEffect(() => {
-    setTimeout(function () {
-      dispatch({ type: CLEAR_AUTH_ERROR });
-    }, 3000);
-  }, [errorStatus, dispatch]);
 
   return (
     <React.Fragment>
@@ -67,7 +49,6 @@ const Login = ({ errorStatus }) => {
           </Form.Group>
         </Form>
         <Button onClick={handleLogin}>Login</Button>
-        {errorStatus && <ErrorPrompt h5="Login Error:" h6={errorStatus} />}
       </Container>
     </React.Fragment>
   );

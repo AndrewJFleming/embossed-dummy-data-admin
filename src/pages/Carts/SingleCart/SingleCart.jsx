@@ -12,7 +12,6 @@ import {
   Container,
   Form,
 } from "react-bootstrap";
-import { userRequest } from "../../../requestMethods";
 import "./SingleCart.css";
 import ImagePlaceholder from "../../../shared/components/ImagePlaceholder/ImagePlaceholder";
 
@@ -44,28 +43,10 @@ const SingleCart = () => {
       userId: myCart.userId,
       products: myCart.products,
     });
-    const getCart = async () => {
-      // const res = await userRequest.get("/carts/find/" + cartId);
-      // setCart(res.data);
-      // setCartProducts({
-      //   userId: res.data.userId,
-      //   products: res.data.products,
-      // });
-    };
-    getCart();
   }, [cartId]);
 
   useEffect(() => {
-    const getProducts = async () => {
-      setAllProducts(productData);
-      // try {
-      //   const res = await userRequest.get("products");
-      //   setAllProducts(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getProducts();
+    setAllProducts(productData);
   }, []);
 
   useEffect(() => {
@@ -130,8 +111,6 @@ const SingleCart = () => {
     }
     try {
       setCartProducts(updatedCart);
-      // await userRequest.put(`/carts/${cartId}`, updatedCart);
-      // window.location.replace("/cart/" + cartId);
     } catch (err) {
       console.log(err);
     }
@@ -174,7 +153,7 @@ const SingleCart = () => {
         <Row>
           {cartProducts?.products.map((p) => (
             <Col xs={12} sm={6} md={4} lg={3} key={p._id}>
-              <Card>
+              <Card className="mb-3">
                 <Card.Img
                   className="product-card-img"
                   variant="top"

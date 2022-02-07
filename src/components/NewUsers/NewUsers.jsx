@@ -3,21 +3,13 @@ import { Link } from "react-router-dom";
 
 import { userData } from "../../dummyData";
 import { Container } from "react-bootstrap";
-import { userRequest } from "../../requestMethods";
 import "./NewUsers.css";
 
 const WidgetSmall = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const getUsers = async () => {
-      setUsers(userData);
-      // try {
-      //   const res = await userRequest.get("users/?new=true");
-      //   setUsers(res.data);
-      // } catch {}
-    };
-    getUsers();
+    setUsers(userData);
   }, []);
 
   return (

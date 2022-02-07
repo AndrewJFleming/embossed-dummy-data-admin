@@ -3,23 +3,12 @@ import { Link } from "react-router-dom";
 
 import { saleData } from "../../dummyData";
 import { Container, Table } from "react-bootstrap";
-import { userRequest } from "../../requestMethods";
 
 const ActiveSales = () => {
   const [sales, setSales] = useState([]);
 
   useEffect(() => {
-    const getSales = async () => {
-      setSales(saleData);
-      // try {
-      //   const res = await userRequest.get("sales");
-      //   setSales(res.data);
-      //   console.log(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getSales();
+    setSales(saleData);
   }, []);
 
   return (

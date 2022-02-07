@@ -3,22 +3,12 @@ import { Link } from "react-router-dom";
 
 import { cartData } from "../../dummyData";
 import { Container, Table } from "react-bootstrap";
-import { userRequest } from "../../requestMethods";
 
 const MyCarts = () => {
   const [carts, setCarts] = useState([]);
 
   useEffect(() => {
-    const getCarts = async () => {
-      setCarts(cartData);
-      // try {
-      //   const res = await userRequest.get("carts");
-      //   setCarts(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getCarts();
+    setCarts(cartData);
   }, []);
 
   return (

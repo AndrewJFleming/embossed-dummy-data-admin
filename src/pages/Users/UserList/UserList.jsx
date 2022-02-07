@@ -2,35 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { userData } from "../../../dummyData";
-import { userRequest } from "../../../requestMethods";
 import { Container, Table, Button } from "react-bootstrap";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const getUsers = async () => {
-      console.log(userData);
-      setUsers(userData);
-      // try {
-      //   const res = await userRequest.get("users");
-      //   setUsers(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getUsers();
+    setUsers(userData);
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     const newUsersArray = users.filter((u) => u._id !== id);
     setUsers(newUsersArray);
-    // try {
-    //   await userRequest.delete(`/users/${id}`);
-    //   window.location.replace("/users/");
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// import { userRequest } from "../../../requestMethods";
 import { productData } from "../../../dummyData";
 import { Container, Form } from "react-bootstrap";
 import "./NewSale.css";
@@ -20,18 +19,8 @@ const NewSale = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [reminder, setReminder] = useState(false);
 
-  //Get products to populate select dropdown.
   useEffect(() => {
-    const getProducts = async () => {
-      setAllProducts(productData);
-      // try {
-      //   const res = await userRequest.get("products");
-      //   setAllProducts(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getProducts();
+    setAllProducts(productData);
   }, []);
 
   const handleChange = (e) =>
@@ -39,16 +28,6 @@ const NewSale = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await userRequest.post("/sales/", formData);
-  //     window.location.replace("/sale/" + res.data._id);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <Container className="my-5">
@@ -146,7 +125,6 @@ const NewSale = () => {
           </Form.Text>
         </Form.Group>
 
-        {/* <Button onClick={handleSubmit}>Create</Button> */}
         <ButtonWithAlert buttonName="Create" />
       </Form>
     </Container>

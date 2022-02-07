@@ -2,34 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { saleData } from "../../../dummyData";
-import { userRequest } from "../../../requestMethods";
 import { Container, Table, Button } from "react-bootstrap";
 
 const SaleList = () => {
   const [sales, setSales] = useState([]);
 
   useEffect(() => {
-    const getSales = async () => {
-      setSales(saleData);
-      // try {
-      //   const res = await userRequest.get("sales");
-      //   setSales(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getSales();
+    setSales(saleData);
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     const newSalesArray = sales.filter((s) => s._id !== id);
     setSales(newSalesArray);
-    // try {
-    //   await userRequest.delete(`/sales/${id}`);
-    //   window.location.replace("/sales/");
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (

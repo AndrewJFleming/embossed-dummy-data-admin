@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 
 import { userData } from "../../../dummyData";
 import { Button, Container, Form, Card, ListGroup } from "react-bootstrap";
-// import { userRequest } from "../../../requestMethods";
 
 const SingleUser = () => {
   const location = useLocation();
@@ -24,32 +23,16 @@ const SingleUser = () => {
 
   useEffect(() => {
     const myUser = userData.find((u) => u._id === userId);
-    const getUser = async () => {
-      setUser(myUser);
-      setFormData({
-        username: myUser.username,
-        email: myUser.email,
-        isAdmin: myUser.isAdmin,
-      });
-      // const res = await userRequest.get("/users/find/" + userId);
-      // setUser(res.data);
-      // setFormData({
-      //   username: res.data.username,
-      //   email: res.data.email,
-      //   isAdmin: res.data.isAdmin,
-      // });
-    };
-    getUser();
+    setUser(myUser);
+    setFormData({
+      username: myUser.username,
+      email: myUser.email,
+      isAdmin: myUser.isAdmin,
+    });
   }, [userId]);
 
-  const handleUpdate = async () => {
+  const handleUpdate = () => {
     setUser(formData);
-    // try {
-    //   await userRequest.put(`/users/admin/${userId}`, formData);
-    //   window.location.replace("/user/" + userId);
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (

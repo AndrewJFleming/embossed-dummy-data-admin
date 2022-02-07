@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 
 import { productData } from "../../../dummyData";
 import { Button, Card, ListGroup, Container, Form } from "react-bootstrap";
-// import { userRequest } from "../../../requestMethods";
 
 const SingleProduct = () => {
   const location = useLocation();
@@ -19,14 +18,22 @@ const SingleProduct = () => {
     img: "",
   });
 
-  const handleUpdate = async () => {
+  useEffect(() => {
+    const myProduct = productData.find((p) => p._id === productId);
+    setProduct(myProduct);
+    setFormData({
+      title: myProduct.title,
+      desc: myProduct.desc,
+      categories: myProduct.categories,
+      variants: myProduct.variants,
+      price: myProduct.price,
+      inStock: myProduct.inStock,
+      img: myProduct.img,
+    });
+  }, [productId]);
+
+  const handleUpdate = () => {
     setProduct(formData);
-    // try {
-    //   await userRequest.put(`/products/${productId}`, formData);
-    //   window.location.replace("/product/" + productId);
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   const handleChange = (e) =>
@@ -41,31 +48,6 @@ const SingleProduct = () => {
       [e.target.name]: e.target.value.split(","),
     });
   };
-
-  useEffect(() => {
-    const myProduct = productData.find((p) => p._id === productId);
-    setProduct(myProduct);
-    setFormData({
-      title: myProduct.title,
-      desc: myProduct.desc,
-      categories: myProduct.categories,
-      variants: myProduct.variants,
-      price: myProduct.price,
-      inStock: myProduct.inStock,
-      img: myProduct.img,
-    });
-    // const res = await userRequest.get("/products/find/" + productId);
-    // setProduct(res.data);
-    // setFormData({
-    //   title: res.data.title,
-    //   desc: res.data.desc,
-    //   categories: res.data.categories,
-    //   variants: res.data.variants,
-    //   price: res.data.price,
-    //   inStock: res.data.inStock,
-    //   img: res.data.img,
-    // });
-  }, [productId]);
 
   return (
     <div className="mb-5">

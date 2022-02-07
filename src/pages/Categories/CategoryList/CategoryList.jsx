@@ -9,33 +9,17 @@ import {
   Tooltip,
   OverlayTrigger,
 } from "react-bootstrap";
-import { userRequest } from "../../../requestMethods";
 
 const CategoryList = () => {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
-    const getCats = async () => {
-      setCats(categoryData);
-      // try {
-      //   const res = await userRequest.get("categories");
-      //   setCats(res.data);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-    };
-    getCats();
+    setCats(categoryData);
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     const newCatsArray = cats.filter((c) => c._id !== id);
     setCats(newCatsArray);
-    // try {
-    //   await userRequest.delete(`/categories/${id}`);
-    //   window.location.replace("/categories/");
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (

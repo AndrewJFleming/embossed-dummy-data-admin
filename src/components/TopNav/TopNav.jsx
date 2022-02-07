@@ -1,27 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { LOGOUT } from "../../redux/constants/actionTypes";
 import "./TopNav.css";
 
 const TopNav = () => {
   const [expanded, setExpanded] = useState(false);
-  const dispatch = useDispatch();
 
   const handleCollapse = () => {
     setExpanded(false);
-  };
-
-  const handleLogout = () => {
-    setExpanded(false);
-    try {
-      dispatch({ type: LOGOUT });
-      window.location.replace("/login/");
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -99,9 +86,6 @@ const TopNav = () => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/login" onClick={handleCollapse}>
               Login
-            </Nav.Link>
-            <Nav.Link as={Link} to="/" onClick={handleLogout}>
-              Logout
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
