@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Container, Form } from "react-bootstrap";
 import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
+import { ReqLblAccs } from "../../../shared/components/ReqLblAccs/ReqLblAccs";
 
 const NewCategory = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,9 @@ const NewCategory = () => {
       <h1>New Category</h1>
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>
+            Name <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="product name"
@@ -34,7 +37,9 @@ const NewCategory = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>
+            Description <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="description"
@@ -73,7 +78,9 @@ const NewCategory = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Image</Form.Label>
+          <Form.Label>
+            Image <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder={formData.img}
@@ -86,7 +93,7 @@ const NewCategory = () => {
           </Form.Text>
         </Form.Group>
 
-        <ButtonWithAlert buttonName="Create" />
+        <ButtonWithAlert data={formData} path="/categories" />
       </Form>
     </Container>
   );

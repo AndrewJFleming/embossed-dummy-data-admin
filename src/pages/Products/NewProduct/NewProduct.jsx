@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Container, Form } from "react-bootstrap";
 import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
+import { ReqLblAccs } from "../../../shared/components/ReqLblAccs/ReqLblAccs";
 
 const NewProduct = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,10 @@ const NewProduct = () => {
       <h1>New Product</h1>
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>
+            Name <ReqLblAccs />
+          </Form.Label>
+
           <Form.Control
             type="text"
             placeholder="product name"
@@ -43,7 +47,9 @@ const NewProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>
+            Description <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="description"
@@ -54,7 +60,9 @@ const NewProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Price</Form.Label>
+          <Form.Label>
+            Price <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="number"
             placeholder={formData.price}
@@ -69,10 +77,15 @@ const NewProduct = () => {
               });
             }}
           />
+          <Form.Text id="passwordHelpBlock" muted>
+            Must be greater than $0.00.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Categories</Form.Label>
+          <Form.Label>
+            Categories <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="stationary,postcards"
@@ -80,9 +93,14 @@ const NewProduct = () => {
             value={formData.categories}
             onChange={handleSplit}
           />
+          <Form.Text id="passwordHelpBlock" muted>
+            Assign at least one category.
+          </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Variants</Form.Label>
+          <Form.Label>
+            Variants <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder="red,blue"
@@ -90,6 +108,9 @@ const NewProduct = () => {
             value={formData.variants}
             onChange={handleSplit}
           />
+          <Form.Text id="passwordHelpBlock" muted>
+            Assign at least one variant.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -107,7 +128,9 @@ const NewProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Photo</Form.Label>
+          <Form.Label>
+            Photo <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder={formData.img}
@@ -120,7 +143,7 @@ const NewProduct = () => {
           </Form.Text>
         </Form.Group>
 
-        <ButtonWithAlert buttonName="Create" />
+        <ButtonWithAlert data={formData} path="/products" />
       </Form>
     </Container>
   );

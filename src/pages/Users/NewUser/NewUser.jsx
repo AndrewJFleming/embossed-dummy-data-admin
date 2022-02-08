@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Container, Form } from "react-bootstrap";
 import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
+import { ReqLblAccs } from "../../../shared/components/ReqLblAccs/ReqLblAccs";
 
 const NewUser = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const NewUser = () => {
     email: "",
     password: "",
     isAdmin: false,
+    inStock: false,
   });
 
   const handleChange = (e) =>
@@ -22,7 +24,9 @@ const NewUser = () => {
       <h1>New User</h1>
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>Username</Form.Label>
+          <Form.Label>
+            Username <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder={formData.username}
@@ -33,7 +37,9 @@ const NewUser = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>
+            Email <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="email"
             placeholder={formData.email}
@@ -58,7 +64,9 @@ const NewUser = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>
+            Password <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder={formData.password}
@@ -68,7 +76,7 @@ const NewUser = () => {
           />
         </Form.Group>
 
-        <ButtonWithAlert buttonName="Create" />
+        <ButtonWithAlert data={formData} path="/users" />
       </Form>
     </Container>
   );

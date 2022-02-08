@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Form } from "react-bootstrap";
+
 import "./PercentInput.css";
 
 const PercentInput = ({ formData, setFormData, reminder, setReminder }) => {

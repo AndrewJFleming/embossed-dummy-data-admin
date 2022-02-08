@@ -71,6 +71,11 @@ Truncate long IDs in tables
   overflow-wrap: normal;
 }
 
+.required-label-accessory {
+  font-size: 10px;
+  color: red;
+}
+
 @media screen and (max-width: 991px) {
   .productThumb {
     width: 50px;

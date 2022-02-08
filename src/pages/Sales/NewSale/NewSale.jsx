@@ -5,6 +5,7 @@ import { Container, Form } from "react-bootstrap";
 import "./NewSale.css";
 import PercentInput from "../../../shared/components/PercentInput/PercentInput";
 import ButtonWithAlert from "../../../shared/components/ButtonWithAlert/ButtonWithAlert";
+import { ReqLblAccs } from "../../../shared/components/ReqLblAccs/ReqLblAccs";
 
 const NewSale = () => {
   const [formData, setFormData] = useState({
@@ -47,10 +48,14 @@ const NewSale = () => {
               <option value={p._id}>{p.title}</option>
             ))}
           </Form.Select>
+          &nbsp;
+          <ReqLblAccs />
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>
+            Title <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder={formData.title}
@@ -61,7 +66,9 @@ const NewSale = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>
+            Description <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             placeholder={formData.desc}
@@ -113,7 +120,9 @@ const NewSale = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Sale Banner Image</Form.Label>
+          <Form.Label>
+            Sale Banner Image <ReqLblAccs />
+          </Form.Label>
           <Form.Control
             type="text"
             value={formData.img}
@@ -125,7 +134,7 @@ const NewSale = () => {
           </Form.Text>
         </Form.Group>
 
-        <ButtonWithAlert buttonName="Create" />
+        <ButtonWithAlert data={formData} path="/sales" />
       </Form>
     </Container>
   );

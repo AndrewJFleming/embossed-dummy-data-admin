@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { cartData } from "../../dummyData";
+import { cartData, userData } from "../../dummyData";
 import { Container, Table } from "react-bootstrap";
 
 const MyCarts = () => {
@@ -11,6 +11,11 @@ const MyCarts = () => {
     setCarts(cartData);
   }, []);
 
+  const findUsername = (cartUserId) => {
+    const result = userData.find((u) => u._id === cartUserId);
+    return result.username;
+  };
+
   return (
     <Container>
       <h3 className="widgetTitle">My Carts</h3>
@@ -18,7 +23,7 @@ const MyCarts = () => {
         <thead>
           <tr>
             <th>Cart Id</th>
-            <th>User Id</th>
+            <th>Username</th>
             <th>Date</th>
             <th>Products</th>
           </tr>
@@ -33,7 +38,9 @@ const MyCarts = () => {
               </td>
               <td>
                 <Link to={"/user/" + cart.userId}>
-                  <div className="longIdWrapper">{cart.userId}</div>
+                  <div className="longIdWrapper">
+                    {findUsername(cart.userId)}
+                  </div>
                 </Link>
               </td>
               <td>{new Date(cart.createdAt).toDateString()}</td>
