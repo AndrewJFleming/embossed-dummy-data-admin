@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://embossed-react-ecommerce-admin.netlify.app/">
-    <img src="client/src/images/logo.png" alt="Logo" height="80">
+    <img src="src/images/logo.png" alt="Logo" height="80">
   </a>
 
   <h3 align="center">Embossed Dummy Data Admin</h3>
@@ -140,4 +140,4 @@ Andrew Fleming - [My LinkedIn](https://www.linkedin.com/in/andrew-j-fleming-web-
 
 
 
-[project-screenshot]: client/src/images/screenshot.png
+[project-screenshot]: src/images/screenshot.png
